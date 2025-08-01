@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nicotine Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="entry-screen">
+    <h1>Nicotine Tracker</h1>
+    <input type="text" id="username" placeholder="Enter your name" />
+    <button onclick="askDeviceType()">Enter</button>
+  </div>
+
+  <!-- Popup 1: Device Type -->
+  <div class="modal hidden" id="device-modal">
+    <h2>What device do you use?</h2>
+    <select id="device-choice">
+      <option value="">-- Select --</option>
+      <option value="vape">Vape</option>
+      <option value="pouch">Pouches</option>
+      <option value="both">Both</option>
+    </select>
+    <button onclick="askUsageDetails()">Next</button>
+  </div>
+
+  <!-- Popup 2: Usage Details -->
+  <div class="modal hidden" id="usage-modal">
+    <div id="usage-form"></div>
+    <button onclick="finishSetup()">Start Tracking</button>
+  </div>
+
+  <!-- ✅ Tracker Dashboard -->
+  <div id="tracker-screen" class="hidden">
+    <h2>Welcome, <span id="user-display"></span>!</h2>
+    <p>Device: <strong id="type-display"></strong></p>
+    <p>Baseline: <strong id="baseline-display"></strong></p>
+
+    <h3>Log Today's Intake</h3>
+    <label for="daily-input">Enter total units used today:</label>
+    <input type="number" id="daily-input" placeholder="e.g. 200 puffs or 4 pouches" />
+    <button onclick="submitUsage()">Submit</button>
+
+    <div id="result" style="margin-top:1rem; font-weight:bold;"></div>
+
+    <h4>Usage History</h4>
+    <ul id="log-history"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
